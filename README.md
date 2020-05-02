@@ -1,3 +1,5 @@
+Following are the commands to setup the basic typescript server: 
+
 1. `npm init`
 
 2.Installing Dependencies
