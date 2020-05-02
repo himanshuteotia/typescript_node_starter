@@ -1,0 +1,28 @@
+{
+  "name": "typescript_node_server",
+  "version": "1.0.0",
+  "description": "1. `npm init`",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himanshuteotia/typescript_node_server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/himanshuteotia/typescript_node_server/issues"
+  },
+  "homepage": "https://github.com/himanshuteotia/typescript_node_server#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "tslint": "^6.1.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

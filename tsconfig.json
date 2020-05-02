@@ -1,0 +1,19 @@
+/*
+module : Specifies the module code generation method. Node uses commonjs.
+target: Specifies the output language level.
+moduleResolution: This helps the compiler figure out what an import refers to. The Valuenode mimics the Node module resolution mechanism.
+outDir: This is the location to output .js files after transpilation. We save it as dist.
+
+*/
+
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "lib": ["es2015"]
+}
