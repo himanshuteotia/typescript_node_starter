@@ -8,7 +8,7 @@
     "dist": "rimraf dist && tsc",
     "lint": "eslint . --ext .ts",
     "test": "jest --detectOpenHandles --colors",
-    "lint-and-fix": "eslint . --ext .ts --fix",
+    "lint-and-fix": "eslint . --ext .ts --fix --cache",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "repository": {
@@ -28,9 +28,11 @@
     "@typescript-eslint/eslint-plugin": "^2.32.0",
     "@typescript-eslint/parser": "^2.32.0",
     "eslint": "^7.0.0",
+    "husky": "^4.2.5",
     "jest": "^26.0.1",
     "jest-junit": "^10.0.0",
     "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.1.0",
     "ts-node-dev": "^1.0.0-pre.49",
@@ -39,5 +41,13 @@
   },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "hooks": {
+    "pre-commit": "pretty-quick --staged --bail && lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint-and-fix"
+    ]
   }
 }
