@@ -8,12 +8,14 @@ outDir: This is the location to output .js files after transpilation. We save it
 
 {
   "compilerOptions": {
+    "target": "es5",
     "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
-    "moduleResolution": "node",
+    "lib": ["es6"],
+    "allowJs": true,
+    "outDir": "dist",
+    "strict": true,
     "sourceMap": true,
-    "outDir": "dist"
-  },
-  "lib": ["es2015"]
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  }
 }
