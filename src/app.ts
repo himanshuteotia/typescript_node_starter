@@ -2,7 +2,7 @@ import express from 'express';
 function loggerMiddleware(
   request: express.Request,
   response: express.Response,
-  next
+  next: express.NextFunction
 ) {
   console.log(`${request.method} ${request.path}`);
   next();
