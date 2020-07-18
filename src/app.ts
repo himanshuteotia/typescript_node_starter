@@ -1,23 +1,29 @@
 import express from 'express';
-function loggerMiddleware(
-  request: express.Request,
-  response: express.Response,
-  next: express.NextFunction
-) {
-  console.log(`${request.method} ${request.path}`);
-  next();
-}
+export class App {
+  constructor(public port: number) {}
 
-const app = express();
-app.use(loggerMiddleware);
-
-const port = 3000;
-app.get('/', (req, res) => {
-  res.send('Ts server is running fine ...');
-});
-app.listen(port, (err) => {
-  if (err) {
-    return console.error(err);
+  loggerMiddleware(
+    request: express.Request,
+    response: express.Response,
+    next: express.NextFunction
+  ) {
+    console.log(`${request.method} ${request.path}`);
+    next();
   }
-  return console.log(`server is listening on ${port}`);
-});
+
+  createApp() {
+    const app: express.Application = express();
+    app.use(this.loggerMiddleware);
+    return app;
+  }
+
+  startServer() {
+    const app = this.createApp();
+    app.listen(this.port, (err: any) => {
+      if (err) {
+        return console.error(err);
+      }
+      return console.log(`server is listening on ${this.port}`);
+    });
+  }
+}
