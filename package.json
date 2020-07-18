@@ -4,7 +4,7 @@
   "description": "1. `npm init`",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/app.ts",
+    "start": "ts-node-dev index.ts",
     "dist": "rimraf dist && tsc",
     "lint": "eslint . --ext .ts",
     "test": "jest --detectOpenHandles --colors",
@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/himanshuteotia/typescript_node_server#readme",
   "devDependencies": {
+    "@types/compression": "^1.7.0",
     "@types/express": "^4.17.6",
     "@types/jest": "^26.0.0",
+    "@types/lusca": "^1.6.2",
     "@types/node": "^14.0.13",
     "@typescript-eslint/eslint-plugin": "^2.32.0",
     "@typescript-eslint/parser": "^2.32.0",
@@ -40,7 +42,10 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "lusca": "^1.6.1",
+    "winston": "^3.3.3"
   },
   "hooks": {
     "pre-commit": "pretty-quick --staged --bail && lint-staged"
