@@ -1,5 +1,10 @@
 import express from 'express';
-export class App {
+import compression from 'compression'; // compresses requests
+import bodyParser from 'body-parser';
+import lusca from 'lusca';
+import path from 'path';
+import logger from './util/logger';
+export default class App {
   constructor(public port: number) {}
 
   loggerMiddleware(
@@ -7,13 +12,20 @@ export class App {
     response: express.Response,
     next: express.NextFunction
   ) {
-    console.log(`${request.method} ${request.path}`);
+    logger.info(`${request.method} ${request.path}`);
     next();
   }
 
   createApp() {
     const app: express.Application = express();
-    app.use(this.loggerMiddleware);
+    app.use(compression());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(lusca.xframe('SAMEORIGIN'));
+    app.use(lusca.xssProtection(true));
+    app.use(
+      express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 })
+    );
     return app;
   }
 
@@ -21,9 +33,9 @@ export class App {
     const app = this.createApp();
     app.listen(this.port, (err: any) => {
       if (err) {
-        return console.error(err);
+        return logger.error(err);
       }
-      return console.log(`server is listening on ${this.port}`);
+      return logger.info(`server is listening on ${this.port}`);
     });
   }
 }
