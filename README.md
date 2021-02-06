@@ -62,3 +62,5 @@ app.listen(port, err => {
 11. To update packaes to latest install
 `npm install -g npm-check-updates`
 then run `ncu -u` & `npm install`
+
+12. To checck any outdated npm please run `npm outdated`
