@@ -1,6 +1,6 @@
 {
   "name": "typescript_node_server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "node & typescript starter project",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,14 @@
     "type": "git",
     "url": "git+https://github.com/himanshuteotia/typescript_node_server.git"
   },
-  "author": "",
+  "author": "Himanshu Teotia",
   "license": "ISC",
+  "keywords": [
+    "typescript",
+    "node",
+    "node starter",
+    "typescript starter"
+  ],
   "bugs": {
     "url": "https://github.com/himanshuteotia/typescript_node_server/issues"
   },
