@@ -57,3 +57,8 @@ app.listen(port, err => {
 ```
 
 10. `npm start`
+
+
+11. To update packaes to latest install
+`npm install -g npm-check-updates`
+then run `ncu -u` & `npm install`
