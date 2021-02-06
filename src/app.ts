@@ -31,11 +31,7 @@ export default class App {
 
   startServer() {
     const app = this.createApp();
-    app.listen(this.port, (err: any) => {
-      if (err) {
-        return logger.error(err);
-      }
-      return logger.info(`server is listening on ${this.port}`);
-    });
+    app.listen(this.port)
+    logger.info(`server is listening on ${this.port}`);
   }
 }
