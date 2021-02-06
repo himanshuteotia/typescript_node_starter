@@ -1,7 +1,7 @@
 {
   "name": "typescript_node_server",
-  "version": "1.0.0",
-  "description": "1. `npm init`",
+  "version": "1.0.1",
+  "description": "node & typescript starter project",
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev index.ts",
