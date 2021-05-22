@@ -1,4 +1,4 @@
-It includes Typescript(4.1.3), EsLint, Jest, Winston, Prettier and many more please check package.json.
+It includes Typescript(4.2.4), EsLint, Jest, Winston, Prettier and many more please check package.json.
 
 Following commands you have to run
 
