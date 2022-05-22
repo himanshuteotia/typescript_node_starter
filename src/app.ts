@@ -1,6 +1,5 @@
 import express from 'express';
 import compression from 'compression'; // compresses requests
-import bodyParser from 'body-parser';
 import lusca from 'lusca';
 import path from 'path';
 import logger from './util/logger';
@@ -11,16 +10,14 @@ export default class App {
     request: express.Request,
     response: express.Response,
     next: express.NextFunction
-  ) {
+  ): void {
     logger.info(`${request.method} ${request.path}`);
     next();
   }
 
-  createApp() {
+  createApp(): express.Application {
     const app: express.Application = express();
     app.use(compression());
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(lusca.xframe('SAMEORIGIN'));
     app.use(lusca.xssProtection(true));
     app.use(
@@ -29,9 +26,9 @@ export default class App {
     return app;
   }
 
-  startServer() {
+  startServer(): void {
     const app = this.createApp();
-    app.listen(this.port)
+    app.listen(this.port);
     logger.info(`server is listening on ${this.port}`);
   }
 }
