@@ -2,18 +2,12 @@ import express from 'express';
 import compression from 'compression'; // compresses requests
 import lusca from 'lusca';
 import path from 'path';
-import logger from './util/logger';
+import logger from './utils/logger.util';
+import { RoutesV1 } from './routes/v1/v1.route';
+import rateLimitRequestHandler from './middlewares/rate-limit.middleware';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
 export default class App {
   constructor(public port: number) {}
-
-  loggerMiddleware(
-    request: express.Request,
-    response: express.Response,
-    next: express.NextFunction
-  ): void {
-    logger.info(`${request.method} ${request.path}`);
-    next();
-  }
 
   createApp(): express.Application {
     const app: express.Application = express();
@@ -22,6 +16,12 @@ export default class App {
     app.use(lusca.xssProtection(true));
     app.use(
       express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 })
+    );
+    app.use(rateLimitRequestHandler());
+    app.use(
+      '/v1/',
+      new LoggerMiddleware().endpointsLogs,
+      new RoutesV1().router
     );
     return app;
   }
