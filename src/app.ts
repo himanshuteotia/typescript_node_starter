@@ -20,6 +20,7 @@ export default class App {
       express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 })
     );
     app.use(rateLimitRequestHandler());
+    app.use('/', (req, res)=> res.status(200).send("Welcome"))
     app.use(
       '/v1/',
       new LoggerMiddleware().endpointsLogs,
