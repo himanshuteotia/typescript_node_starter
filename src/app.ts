@@ -11,6 +11,8 @@ export default class App {
 
   createApp(): express.Application {
     const app: express.Application = express();
+    // Trust specific proxies (replace 'loopback' with your trusted proxy's IP or subnet)
+    app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
     app.use(compression());
     app.use(lusca.xframe('SAMEORIGIN'));
     app.use(lusca.xssProtection(true));
