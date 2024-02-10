@@ -12,6 +12,7 @@ export enum EnvironmentStr {
 const {ENVIRONMENT} = process.env;
 export const production = ENVIRONMENT === EnvironmentStr.PRODUCTION;
 export const development = ENVIRONMENT === EnvironmentStr.DEVELOPMENT;
+export const environment = production ? EnvironmentStr.PRODUCTION : EnvironmentStr.DEVELOPMENT;
 
 const config = () =>{
     if(production){

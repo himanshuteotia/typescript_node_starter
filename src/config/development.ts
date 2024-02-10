@@ -7,4 +7,4 @@ const config = {
     debug: true,
 } satisfies Record<string,number|boolean>
 
-export default merge(production,config);
+export default merge(production,config) as typeof production;

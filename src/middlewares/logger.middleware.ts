@@ -1,5 +1,6 @@
 import logger from '../utils/logger.util';
 import { Request, Response, NextFunction } from 'express';
+import config from '../config/config';
 
 export class LoggerMiddleware {
   endpointsLogs(
@@ -7,7 +8,9 @@ export class LoggerMiddleware {
     response: Response,
     next: NextFunction
   ): void {
-    logger.info(`${request.method} ${request.path}`);
+    if(config?.debug){
+      logger.info(`${request.method} ${request.path}`);
+    }
     next();
   }
 }

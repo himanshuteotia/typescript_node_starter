@@ -1,11 +1,11 @@
 import rateLimit, { RateLimitRequestHandler } from 'express-rate-limit';
+import { environment } from '../config/config';
 
-const env = process.env.NODE_ENV || 'dev';
 const rateLimitRequest = Number(process.env.RATE_LIMIT_TIME) || 15;
 const rateLimitTime = Number(process.env.RATE_LIMIT_REQUEST) || 100;
 
 export default (): RateLimitRequestHandler => {
-  if (env === 'production') {
+  if (environment === 'production') {
     return rateLimit({
       windowMs: rateLimitTime * 60 * 1000, // 15 minutes
       max: rateLimitRequest // limit each IP to 30 requests per windowMs
