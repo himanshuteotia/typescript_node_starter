@@ -1,6 +1,7 @@
 import App from './src/app';
+import config from "./src/config/config";
 
-const PORT = 3000;
+const PORT = config.port;
 const app = new App(PORT);
 
 app.startServer();
